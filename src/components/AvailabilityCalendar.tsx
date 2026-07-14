@@ -24,11 +24,13 @@ export default function AvailabilityCalendar({
         }}
         classNames={{
           months: "flex flex-col",
-          caption: "flex justify-center py-2 font-medium text-sage-900",
-          nav_button: "text-sage-600 hover:text-sage-900",
+          caption_label: "flex justify-center py-2 font-medium text-sage-900",
+          button_previous: "text-sage-400 hover:text-sage-900",
+          button_next: "text-sage-400 hover:text-sage-900",
+          chevron: "fill-sage-400 hover:fill-sage-900 hover:cursor-pointer",
           day: "text-sage-800 rounded-lg hover:bg-sage-100",
-          day_selected: "bg-sage-600 text-white hover:bg-sage-700",
-          day_today: "font-bold",
+          selected: "bg-sage-600 text-white hover:bg-sage-700",
+          today: "font-bold",
         }}
       />
       <div className="mt-4 flex gap-4 text-sm text-sage-600">
