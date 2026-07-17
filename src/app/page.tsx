@@ -2,9 +2,13 @@
 import Hero from "@/components/Hero";
 import ApartmentRow from "@/components/ApartmentRow";
 import Faq from "@/components/Faq";
-import { apartments } from "@/lib/mock-data";
+// import { apartments } from "@/lib/mock-data";
+import { getAllApartments } from "@/lib/db/queries";
 
-export default function Home() {
+export default async function Home() {
+
+  const apartments = await getAllApartments();
+  
   return (
     <main className="min-h-screen bg-sage-50">
       <Hero />

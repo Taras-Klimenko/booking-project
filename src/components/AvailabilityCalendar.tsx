@@ -4,12 +4,18 @@ import { DayPicker } from "react-day-picker";
 import { ru } from "date-fns/locale";
 import "react-day-picker/dist/style.css";
 
+type CalendarEntry = {
+  date: string;
+  isAvailable: boolean;
+  price: number | null;
+}
+
 export default function AvailabilityCalendar({
-  bookedDates,
+  calendar,
 }: {
-  bookedDates: string[];
+  calendar: CalendarEntry[];
 }) {
-  const booked = bookedDates.map((d) => new Date(d));
+  const booked = calendar.filter(entry => !entry.isAvailable).map(entry => new Date(entry.date));
 
   return (
     <div className="rounded-2xl border border-sage-200 bg-white p-6">

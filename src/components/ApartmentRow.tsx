@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { Apartment } from "@/lib/mock-data";
+import type { Apartment } from "@/lib/types";
 
 export default function ApartmentRow({ apartment }: { apartment: Apartment }) {
   const [active, setActive] = useState(0);

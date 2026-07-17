@@ -1,12 +1,10 @@
 import { notFound } from "next/navigation";
-import { getApartmentBySlug, apartments } from "@/lib/mock-data";
+// import { getApartmentBySlug, apartments } from "@/lib/mock-data";
+import { getApartmentBySlug } from "@/lib/db/queries";
 import Gallery from "@/components/Gallery";
 import AvailabilityCalendar from "@/components/AvailabilityCalendar";
 import BookingForm from "@/components/BookingForm";
 
-export function generateStaticParams() {
-  return apartments.map((apt) => ({ slug: apt.slug }));
-}
 
 export default async function ApartmentPage({
   params,
@@ -14,7 +12,7 @@ export default async function ApartmentPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const apartment = getApartmentBySlug(slug);
+  const apartment = await getApartmentBySlug(slug);
   if (!apartment) notFound();
 
   return (
@@ -60,7 +58,7 @@ export default async function ApartmentPage({
             </div>
             <BookingForm apartmentTitle={apartment.title} />
 
-            <AvailabilityCalendar bookedDates={apartment.bookedDates} />
+            <AvailabilityCalendar calendar={apartment.calendar} />
           </div>
         </div>
       </div>
