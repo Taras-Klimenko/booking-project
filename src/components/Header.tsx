@@ -44,6 +44,9 @@ export default function Header() {
           <a href="/#faq" className="hover:text-sage-600">
             Вопросы
           </a>
+          <a href="/#testimonials" className="hover:text-sage-600">
+            Отзывы
+          </a>
           <a href="/#contacts" className="hover:text-sage-600">
             Контакты
           </a>

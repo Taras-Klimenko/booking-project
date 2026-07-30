@@ -2,12 +2,24 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { Apartment } from "@/lib/types";
+
+const AUTO_INTERVAL_MS = 5000;
 
 export default function ApartmentRow({ apartment }: { apartment: Apartment }) {
   const [active, setActive] = useState(0);
   const hasMultiple = apartment.images.length > 1;
+
+  useEffect(() => {
+    if (!hasMultiple) return;
+
+    const id = setInterval(() => {
+      setActive((i) => (i === apartment.images.length - 1 ? 0 : i + 1));
+    }, AUTO_INTERVAL_MS);
+
+    return () => clearInterval(id);
+  }, [hasMultiple, apartment.images.length, active]);
 
   function prev(e: React.MouseEvent) {
     e.preventDefault();
@@ -21,12 +33,18 @@ export default function ApartmentRow({ apartment }: { apartment: Apartment }) {
 
   return (
     <div className="relative h-[480px] overflow-hidden sm:h-[420px]">
-      <Image
-        src={apartment.images[active]}
-        alt={apartment.title}
-        fill
-        className="object-cover transition-opacity duration-300"
-      />
+      {apartment.images.map((src, i) => (
+        <Image
+          key={src}
+          src={src}
+          alt={apartment.title}
+          fill
+          className={`object-cover transition-opacity duration-700 ease-in-out ${
+            i === active ? "opacity-100" : "opacity-0"
+          }`}
+          priority={i === 0}
+        />
+      ))}
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
 
       {hasMultiple && (
@@ -34,23 +52,23 @@ export default function ApartmentRow({ apartment }: { apartment: Apartment }) {
           <button
             onClick={prev}
             aria-label="Предыдущее фото"
-            className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-black/30 p-2 text-white transition-colors hover:bg-black/50"
+            className="absolute left-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-black/30 p-2 text-white transition-colors hover:bg-black/50"
           >
             ←
           </button>
           <button
             onClick={next}
             aria-label="Следующее фото"
-            className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-black/30 p-2 text-white transition-colors hover:bg-black/50"
+            className="absolute right-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-black/30 p-2 text-white transition-colors hover:bg-black/50"
           >
             →
           </button>
 
-          <div className="absolute top-4 right-4 flex gap-1.5">
+          <div className="absolute top-4 right-4 z-10 flex gap-1.5">
             {apartment.images.map((_, i) => (
               <span
                 key={i}
-                className={`h-1.5 w-1.5 rounded-full transition-colors ${
+                className={`h-1.5 w-1.5 rounded-full transition-colors duration-300 ${
                   i === active ? "bg-white" : "bg-white/40"
                 }`}
               />
@@ -59,7 +77,7 @@ export default function ApartmentRow({ apartment }: { apartment: Apartment }) {
         </>
       )}
 
-      <div className="absolute bottom-6 left-4 right-4 flex flex-col gap-4 text-white sm:bottom-8 sm:left-8 sm:right-8 sm:flex-row sm:items-end sm:justify-between">
+      <div className="absolute bottom-6 left-4 right-4 z-10 flex flex-col gap-4 text-white sm:bottom-8 sm:left-8 sm:right-8 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="text-sm uppercase tracking-wide text-sage-100">
             м. {apartment.metro}

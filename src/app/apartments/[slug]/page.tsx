@@ -56,9 +56,8 @@ export default async function ApartmentPage({
                 </span>
               </p>
             </div>
-            <BookingForm apartmentTitle={apartment.title} />
-
             <AvailabilityCalendar calendar={apartment.calendar} />
+            <BookingForm apartmentTitle={apartment.title} />
           </div>
         </div>
       </div>

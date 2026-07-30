@@ -1,9 +1,8 @@
-// src/app/page.tsx
 import Hero from "@/components/Hero";
 import ApartmentRow from "@/components/ApartmentRow";
 import Faq from "@/components/Faq";
-// import { apartments } from "@/lib/mock-data";
 import { getAllApartments } from "@/lib/db/queries";
+import Testimonials from "@/components/Testimonials";
 
 export default async function Home() {
 
@@ -25,6 +24,9 @@ export default async function Home() {
         {apartments.map((apt) => (
           <ApartmentRow key={apt.id} apartment={apt} />
         ))}
+      </section>
+      <section id="testimonials">
+        <Testimonials />
       </section>
       <section id="faq">
         <Faq />
