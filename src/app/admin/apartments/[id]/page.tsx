@@ -65,6 +65,8 @@ export default async function AdminApartmentPage({
                     fullDescription: apartment.fullDescription,
                     address: apartment.address,
                     metro: apartment.metro,
+                    latitude: apartment.latitude,
+                    longitude: apartment.longitude,
                     pricePerNight: apartment.pricePerNight,
                     amenities: apartment.amenities,
                   }}

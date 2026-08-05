@@ -6,6 +6,8 @@ export type Apartment = {
     fullDescription: string;
     address: string;
     metro: string;
+    latitude: number | null;
+    longitude: number | null;
     pricePerNight: number;
     amenities: string[];
     images: string[];

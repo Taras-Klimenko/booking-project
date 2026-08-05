@@ -25,12 +25,20 @@ function slugify(title: string) {
         .replace(/-+/g, "-");
 }
 
+function parseOptionalCoord(value: FormDataEntryValue | null) {
+    if (typeof value !== "string" || !value.trim()) return null;
+    const n = Number(value);
+    return Number.isFinite(n) ? n : null;
+}
+
 export async function createApartment(formData: FormData) {
     const title = formData.get("title") as string;
     const description = formData.get("description") as string;
     const fullDescription = formData.get("fullDescription") as string;
     const address = formData.get("address") as string;
     const metro = formData.get("metro") as string;
+    const latitude = parseOptionalCoord(formData.get("latitude"));
+    const longitude = parseOptionalCoord(formData.get("longitude"));
     const pricePerNight = Number(formData.get("pricePerNight"));
     const amenities = (formData.get("amenities") as string)
         .split(",")
@@ -48,6 +56,8 @@ export async function createApartment(formData: FormData) {
             fullDescription,
             address,
             metro,
+            latitude,
+            longitude,
             pricePerNight,
             amenities,
         })
@@ -79,13 +89,15 @@ export async function updateApartment(apartmentId: number, formData: FormData) {
     const fullDescription = formData.get("fullDescription") as string;
     const address = formData.get("address") as string;
     const metro = formData.get("metro") as string;
+    const latitude = parseOptionalCoord(formData.get("latitude"));
+    const longitude = parseOptionalCoord(formData.get("longitude"));
     const pricePerNight = Number(formData.get("pricePerNight"));
     const amenities = (formData.get("amenities") as string)
         .split(",")
         .map((a) => a.trim())
         .filter(Boolean);
 
-    await db
+    const [updated] = await db
         .update(apartments)
         .set({
             title,
@@ -93,15 +105,21 @@ export async function updateApartment(apartmentId: number, formData: FormData) {
             fullDescription,
             address,
             metro,
+            latitude,
+            longitude,
             pricePerNight,
             amenities,
             updatedAt: new Date(),
         })
-        .where(eq(apartments.id, apartmentId));
+        .where(eq(apartments.id, apartmentId))
+        .returning({ slug: apartments.slug });
 
     revalidatePath("/admin");
     revalidatePath(`/admin/apartments/${apartmentId}`);
     revalidatePath("/");
+    if (updated?.slug) {
+        revalidatePath(`/apartments/${updated.slug}`);
+    }
 }
 
 export async function deleteApartment(apartmentId: number) {

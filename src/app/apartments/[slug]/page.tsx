@@ -4,6 +4,7 @@ import { getApartmentBySlug } from "@/lib/db/queries";
 import Gallery from "@/components/Gallery";
 import AvailabilityCalendar from "@/components/AvailabilityCalendar";
 import BookingForm from "@/components/BookingForm";
+import YandexMap from "@/components/YandexMap";
 
 
 export default async function ApartmentPage({
@@ -44,6 +45,16 @@ export default async function ApartmentPage({
                 ))}
               </div>
             </div>
+
+            {apartment.latitude != null && apartment.longitude != null && (
+              <div className="mt-8">
+                <YandexMap
+                  latitude={apartment.latitude}
+                  longitude={apartment.longitude}
+                  address={apartment.address}
+                />
+              </div>
+            )}
           </div>
 
           <div className="space-y-6">

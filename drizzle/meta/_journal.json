@@ -8,6 +8,13 @@
       "when": 1784034533179,
       "tag": "0000_yummy_preak",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1785800000000,
+      "tag": "0001_apartment_coordinates",
+      "breakpoints": true
     }
   ]
 }

@@ -8,6 +8,8 @@ type ApartmentFormValues = {
   fullDescription: string;
   address: string;
   metro: string;
+  latitude: number | null;
+  longitude: number | null;
   pricePerNight: number;
   amenities: string[];
 };
@@ -85,6 +87,39 @@ export default function ApartmentForm({
             required
             className="w-full rounded-lg border border-sage-300 px-4 py-2 focus:border-sage-600 focus:outline-none"
           />
+        </div>
+      </div>
+
+      <div>
+        <label className="mb-1 block text-sm text-sage-600">
+          Координаты для карты (необязательно)
+        </label>
+        <p className="mb-2 text-xs text-sage-500">
+          Можно скопировать из Яндекс.Карт: ПКМ по точке → «Что здесь?»
+        </p>
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label className="mb-1 block text-xs text-sage-500">Широта</label>
+            <input
+              type="number"
+              name="latitude"
+              step="any"
+              defaultValue={initialValues?.latitude ?? undefined}
+              placeholder="55.805"
+              className="w-full rounded-lg border border-sage-300 px-4 py-2 focus:border-sage-600 focus:outline-none"
+            />
+          </div>
+          <div>
+            <label className="mb-1 block text-xs text-sage-500">Долгота</label>
+            <input
+              type="number"
+              name="longitude"
+              step="any"
+              defaultValue={initialValues?.longitude ?? undefined}
+              placeholder="37.515"
+              className="w-full rounded-lg border border-sage-300 px-4 py-2 focus:border-sage-600 focus:outline-none"
+            />
+          </div>
         </div>
       </div>
 

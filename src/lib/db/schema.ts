@@ -1,4 +1,4 @@
-import { pgTable, serial, text, integer, boolean, date, timestamp } from "drizzle-orm/pg-core";
+import { pgTable, serial, text, integer, boolean, date, timestamp, doublePrecision } from "drizzle-orm/pg-core";
 
 export const apartments = pgTable("apartments", {
   id: serial("id").primaryKey(),
@@ -8,6 +8,8 @@ export const apartments = pgTable("apartments", {
   fullDescription: text("full_description").notNull(),
   address: text("address").notNull(),
   metro: text("metro").notNull(),
+  latitude: doublePrecision("latitude"),
+  longitude: doublePrecision("longitude"),
   pricePerNight: integer("price_per_night").notNull(),
   amenities: text("amenities").array().notNull().default([]),
   createdAt: timestamp("created_at").defaultNow(),

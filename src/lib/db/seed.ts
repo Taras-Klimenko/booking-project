@@ -9,6 +9,8 @@ type MockApartment = {
   fullDescription: string;
   address: string;
   metro: string;
+  latitude: number;
+  longitude: number;
   pricePerNight: number;
   images: string[];
   amenities: string[];
@@ -25,6 +27,8 @@ const mockApartments: MockApartment[] = [
       "Светлая студия с современным ремонтом в 5 минутах от метро Сокол. Полностью оборудованная кухня, стиральная машина, кондиционер, быстрый интернет. Идеально подходит для командировочных и коротких поездок.",
     address: "ул. Примерная, 1",
     metro: "Сокол",
+    latitude: 55.8048,
+    longitude: 37.5153,
     pricePerNight: 3500,
     images: ["/placeholder-apartment.webp", "/placeholder-apartment.webp", "/placeholder-apartment.webp"],
     amenities: ["Wi-Fi", "Кондиционер", "Стиральная машина", "Кухня", "Парковка"],
@@ -39,6 +43,8 @@ const mockApartments: MockApartment[] = [
       "Просторная однокомнатная квартира, тихий двор, рядом парк. Полностью оборудованная кухня, стиральная машина, кондиционер, быстрый интернет. Идеально подходит для командировочных и коротких поездок.",
     address: "ул. Примерная, 2",
     metro: "Войковская",
+    latitude: 55.819,
+    longitude: 37.4978,
     pricePerNight: 4000,
     images: ["/placeholder-apartment.webp", "/placeholder-apartment.webp", "/placeholder-apartment.webp"],
     amenities: ["Wi-Fi", "Кондиционер", "Стиральная машина", "Кухня", "Парковка"],
@@ -53,6 +59,8 @@ const mockApartments: MockApartment[] = [
       "Современный интерьер, вид на парк, всё необходимое для командировки. Полностью оборудованная кухня, стиральная машина, кондиционер, быстрый интернет. Идеально подходит для командировочных и коротких поездок.",
     address: "ул. Примерная, 3",
     metro: "МЦД Стрешнево",
+    latitude: 55.8134,
+    longitude: 37.4867,
     pricePerNight: 3800,
     images: ["/placeholder-apartment.webp", "/placeholder-apartment.webp"],
     amenities: ["Wi-Fi", "Кондиционер", "Стиральная машина", "Кухня", "Парковка"],
@@ -67,6 +75,8 @@ const mockApartments: MockApartment[] = [
       "Подойдёт для командировочных вдвоём или небольшой семьи. Полностью оборудованная кухня, стиральная машина, кондиционер, быстрый интернет. Идеально подходит для командировочных и коротких поездок.",
     address: "ул. Примерная, 4",
     metro: "Сокол",
+    latitude: 55.8055,
+    longitude: 37.5168,
     pricePerNight: 5000,
     images: ["/placeholder-apartment.webp", "/placeholder-apartment.webp", "/placeholder-apartment.webp"],
     amenities: ["Wi-Fi", "Кондиционер", "Стиральная машина", "Кухня", "Парковка"],
@@ -99,6 +109,8 @@ async function seed() {
         fullDescription: apt.fullDescription,
         address: apt.address,
         metro: apt.metro,
+        latitude: apt.latitude,
+        longitude: apt.longitude,
         pricePerNight: apt.pricePerNight,
         amenities: apt.amenities,
       })
