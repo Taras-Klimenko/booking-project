@@ -1,22 +1,3 @@
-import DOMPurify from "isomorphic-dompurify";
-
-const ALLOWED_TAGS = [
-  "p",
-  "br",
-  "strong",
-  "b",
-  "em",
-  "i",
-  "u",
-  "s",
-  "h2",
-  "h3",
-  "ul",
-  "ol",
-  "li",
-  "blockquote",
-];
-
 export function isRichHtml(content: string) {
   return /<\/?[a-z][\s\S]*>/i.test(content);
 }
@@ -37,11 +18,4 @@ export function toEditorHtml(content: string) {
       return `<p>${escaped}</p>`;
     })
     .join("");
-}
-
-export function sanitizeRichText(html: string) {
-  return DOMPurify.sanitize(html, {
-    ALLOWED_TAGS,
-    ALLOWED_ATTR: [],
-  });
 }

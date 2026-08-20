@@ -1,4 +1,4 @@
-import { isRichHtml, sanitizeRichText } from "@/lib/rich-text";
+import { isRichHtml } from "@/lib/rich-text";
 
 export default function RichText({ content }: { content: string }) {
   if (!content.trim()) return null;
@@ -9,12 +9,10 @@ export default function RichText({ content }: { content: string }) {
     );
   }
 
-  const html = sanitizeRichText(content);
-
   return (
     <div
       className="rich-text text-sage-700"
-      dangerouslySetInnerHTML={{ __html: html }}
+      dangerouslySetInnerHTML={{ __html: content }}
     />
   );
 }

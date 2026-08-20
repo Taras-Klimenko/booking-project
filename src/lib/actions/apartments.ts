@@ -5,7 +5,7 @@ import { apartments, calendarEntries } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { sanitizeRichText } from "@/lib/rich-text";
+import { sanitizeRichText } from "@/lib/sanitize-rich-text";
 
 const translitMap: Record<string, string> = {
     а: "a", б: "b", в: "v", г: "g", д: "d", е: "e", ё: "e", ж: "zh",
