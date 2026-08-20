@@ -4,8 +4,8 @@ export default function Hero() {
       <section className="relative flex min-h-screen items-end overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="/placeholder-apartment.webp"
-            alt="Уютное завтра"
+            src="/hero.png"
+            alt="Просто Уютно"
             className="h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-sage-900/70 via-sage-900/20 to-transparent" />
@@ -13,7 +13,7 @@ export default function Hero() {
   
         <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-16">
           <h1 className="font-serif text-5xl text-white sm:text-6xl">
-            Уютное завтра
+            Просто Уютно
           </h1>
           <p className="mt-2 font-serif text-3xl italic text-sage-100">
             квартиры посуточно для комфортного проживания

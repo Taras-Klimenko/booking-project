@@ -5,6 +5,7 @@ import Gallery from "@/components/Gallery";
 import AvailabilityCalendar from "@/components/AvailabilityCalendar";
 import BookingForm from "@/components/BookingForm";
 import YandexMap from "@/components/YandexMap";
+import RichText from "@/components/RichText";
 
 
 export default async function ApartmentPage({
@@ -30,9 +31,9 @@ export default async function ApartmentPage({
           <div className="lg:col-span-2">
             <Gallery images={apartment.images} title={apartment.title} />
 
-            <p className="mt-8 whitespace-pre-wrap text-sage-700">
-              {apartment.fullDescription}
-            </p>
+            <div className="mt-8">
+              <RichText content={apartment.fullDescription} />
+            </div>
 
             <div className="mt-8">
               <h3 className="font-serif text-xl text-sage-900">Удобства</h3>

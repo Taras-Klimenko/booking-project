@@ -5,6 +5,7 @@ import { apartments, calendarEntries } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { sanitizeRichText } from "@/lib/rich-text";
 
 const translitMap: Record<string, string> = {
     а: "a", б: "b", в: "v", г: "g", д: "d", е: "e", ё: "e", ж: "zh",
@@ -34,7 +35,9 @@ function parseOptionalCoord(value: FormDataEntryValue | null) {
 export async function createApartment(formData: FormData) {
     const title = formData.get("title") as string;
     const description = formData.get("description") as string;
-    const fullDescription = formData.get("fullDescription") as string;
+    const fullDescription = sanitizeRichText(
+        formData.get("fullDescription") as string,
+    );
     const address = formData.get("address") as string;
     const metro = formData.get("metro") as string;
     const latitude = parseOptionalCoord(formData.get("latitude"));
@@ -86,7 +89,9 @@ export async function createApartment(formData: FormData) {
 export async function updateApartment(apartmentId: number, formData: FormData) {
     const title = formData.get("title") as string;
     const description = formData.get("description") as string;
-    const fullDescription = formData.get("fullDescription") as string;
+    const fullDescription = sanitizeRichText(
+        formData.get("fullDescription") as string,
+    );
     const address = formData.get("address") as string;
     const metro = formData.get("metro") as string;
     const latitude = parseOptionalCoord(formData.get("latitude"));

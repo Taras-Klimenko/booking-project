@@ -30,7 +30,7 @@ export default function Header() {
             scrolled ? "text-sage-900" : "text-white"
           }`}
         >
-          Уютное завтра
+          Просто Уютно
         </Link>
 
         <nav

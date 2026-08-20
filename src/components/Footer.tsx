@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-3">
           <div>
             <p className="font-serif text-2xl italic text-white">
-              Уютное завтра
+              Просто Уютно
             </p>
             <p className="mt-3 text-sm text-sage-300">
               Квартиры посуточно рядом с м. Сокол, Войковская, МЦД Стрешнево.
@@ -40,8 +40,11 @@ export default function Footer() {
               Связаться
             </p>
             <div className="mt-4 flex flex-col gap-2 text-sm">
-              <a href="tel:+70000000000" className="hover:text-white">
-                +7 (000) 000-00-00
+              <a href="tel:+79653236684" className="hover:text-white">
+                +7-965-323-66-84
+              </a>
+              <a href="tel:+79653012729" className="hover:text-white">
+                +7-965-301-27-29
               </a>
               <a href="https://t.me/your_telegram" className="hover:text-white">
                 Telegram
@@ -51,7 +54,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 border-t border-sage-700 pt-6 text-xs text-sage-400">
-          © {new Date().getFullYear()} Уютное завтра. Все права защищены.
+          © {new Date().getFullYear()} Просто Уютно. Все права защищены.
         </div>
       </div>
     </footer>
