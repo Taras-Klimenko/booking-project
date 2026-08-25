@@ -4,12 +4,17 @@ export async function POST(request: Request) {
   try {
     const { name, phone, dates, apartmentTitle } = await request.json();
 
+    console.log("TOKEN длина:", process.env.TELEGRAM_BOT_TOKEN?.length);
+    console.log("TOKEN начало/конец:", JSON.stringify(process.env.TELEGRAM_BOT_TOKEN));
+
     if (!name || !phone) {
       return NextResponse.json(
         { error: "Укажите имя и телефон" },
         { status: 400 }
       );
     }
+
+
 
     const text = `
 🏠 Новая заявка с сайта!
