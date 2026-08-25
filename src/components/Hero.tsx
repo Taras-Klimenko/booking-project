@@ -26,7 +26,7 @@ export default function Hero() {
             </div>
             <div className="h-10 w-px bg-white/30" />
             <div>
-              <span className="text-2xl font-semibold">5 мин</span>
+              <span className="text-2xl font-semibold">3 мин</span>
               <p className="text-sm text-sage-100">пешком до метро</p>
             </div>
             <div className="h-10 w-px bg-white/30" />

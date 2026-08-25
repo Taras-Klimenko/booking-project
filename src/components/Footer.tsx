@@ -46,7 +46,7 @@ export default function Footer() {
               <a href="tel:+79653012729" className="hover:text-white">
                 +7-965-301-27-29
               </a>
-              <a href="https://t.me/your_telegram" className="hover:text-white">
+              <a href="https://t.me/Adilya17S" className="hover:text-white">
                 Telegram
               </a>
             </div>

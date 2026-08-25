@@ -53,7 +53,7 @@ export default function Header() {
         </nav>
 
         <a
-          href="https://t.me/your_telegram"
+          href="https://t.me/Adilya17S"
           className={`rounded border px-5 py-2 text-sm transition-colors ${
             scrolled
               ? "border-sage-900 text-sage-900 hover:bg-sage-900 hover:text-white"
