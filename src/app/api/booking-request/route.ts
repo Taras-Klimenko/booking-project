@@ -33,6 +33,8 @@ export async function POST(request: Request) {
     );
 
     if (!response.ok) {
+      const errorBody = await response.text();
+      console.error("Telegram API responded with error:", response.status, errorBody);
       throw new Error("Telegram API error");
     }
 
