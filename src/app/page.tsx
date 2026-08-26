@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import Hero from "@/components/Hero";
 import ApartmentRow from "@/components/ApartmentRow";
 import Faq from "@/components/Faq";

@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { db } from "@/lib/db/client";
 import { apartments } from "@/lib/db/schema";
 import Link from "next/link";
